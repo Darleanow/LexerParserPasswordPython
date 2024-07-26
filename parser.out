@@ -1,0 +1,132 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> password
+Rule 1     password -> characters
+Rule 2     characters -> character characters
+Rule 3     characters -> character
+Rule 4     character -> UPPERCASE
+Rule 5     character -> LOWERCASE
+Rule 6     character -> DIGIT
+Rule 7     character -> SPECIAL
+
+Terminals, with rules where they appear
+
+DIGIT                : 6
+LOWERCASE            : 5
+SPECIAL              : 7
+UPPERCASE            : 4
+error                : 
+
+Nonterminals, with rules where they appear
+
+character            : 2 3
+characters           : 1 2
+password             : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . password
+    (1) password -> . characters
+    (2) characters -> . character characters
+    (3) characters -> . character
+    (4) character -> . UPPERCASE
+    (5) character -> . LOWERCASE
+    (6) character -> . DIGIT
+    (7) character -> . SPECIAL
+
+    UPPERCASE       shift and go to state 4
+    LOWERCASE       shift and go to state 5
+    DIGIT           shift and go to state 6
+    SPECIAL         shift and go to state 7
+
+    password                       shift and go to state 1
+    characters                     shift and go to state 2
+    character                      shift and go to state 3
+
+state 1
+
+    (0) S' -> password .
+
+
+
+state 2
+
+    (1) password -> characters .
+
+    $end            reduce using rule 1 (password -> characters .)
+
+
+state 3
+
+    (2) characters -> character . characters
+    (3) characters -> character .
+    (2) characters -> . character characters
+    (3) characters -> . character
+    (4) character -> . UPPERCASE
+    (5) character -> . LOWERCASE
+    (6) character -> . DIGIT
+    (7) character -> . SPECIAL
+
+    $end            reduce using rule 3 (characters -> character .)
+    UPPERCASE       shift and go to state 4
+    LOWERCASE       shift and go to state 5
+    DIGIT           shift and go to state 6
+    SPECIAL         shift and go to state 7
+
+    character                      shift and go to state 3
+    characters                     shift and go to state 8
+
+state 4
+
+    (4) character -> UPPERCASE .
+
+    UPPERCASE       reduce using rule 4 (character -> UPPERCASE .)
+    LOWERCASE       reduce using rule 4 (character -> UPPERCASE .)
+    DIGIT           reduce using rule 4 (character -> UPPERCASE .)
+    SPECIAL         reduce using rule 4 (character -> UPPERCASE .)
+    $end            reduce using rule 4 (character -> UPPERCASE .)
+
+
+state 5
+
+    (5) character -> LOWERCASE .
+
+    UPPERCASE       reduce using rule 5 (character -> LOWERCASE .)
+    LOWERCASE       reduce using rule 5 (character -> LOWERCASE .)
+    DIGIT           reduce using rule 5 (character -> LOWERCASE .)
+    SPECIAL         reduce using rule 5 (character -> LOWERCASE .)
+    $end            reduce using rule 5 (character -> LOWERCASE .)
+
+
+state 6
+
+    (6) character -> DIGIT .
+
+    UPPERCASE       reduce using rule 6 (character -> DIGIT .)
+    LOWERCASE       reduce using rule 6 (character -> DIGIT .)
+    DIGIT           reduce using rule 6 (character -> DIGIT .)
+    SPECIAL         reduce using rule 6 (character -> DIGIT .)
+    $end            reduce using rule 6 (character -> DIGIT .)
+
+
+state 7
+
+    (7) character -> SPECIAL .
+
+    UPPERCASE       reduce using rule 7 (character -> SPECIAL .)
+    LOWERCASE       reduce using rule 7 (character -> SPECIAL .)
+    DIGIT           reduce using rule 7 (character -> SPECIAL .)
+    SPECIAL         reduce using rule 7 (character -> SPECIAL .)
+    $end            reduce using rule 7 (character -> SPECIAL .)
+
+
+state 8
+
+    (2) characters -> character characters .
+
+    $end            reduce using rule 2 (characters -> character characters .)
+
